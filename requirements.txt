@@ -1,0 +1,3 @@
+Flask==1.1.2
+Pyrebase4==4.4.1
+pyrebase==3.0.27
