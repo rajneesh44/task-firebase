@@ -63,5 +63,5 @@ def home():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
-    app.secret_key = 'many random bytes'
+    app.run()
+    
