@@ -5,7 +5,7 @@ from flask import render_template, request, redirect, session, flash
 import os
 
 app = Flask(__name__)
-app.secret_key = 'many random bytes'
+
 config = {
     "apiKey": "AIzaSyAkwb9HdBJ5biBLypINydaOP_SJitLICn4",
     "authDomain": "task-swe.firebaseapp.com",
