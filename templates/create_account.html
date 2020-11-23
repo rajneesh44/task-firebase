@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <br/>
+    <div class="container">
+      <div class="jumbotron">
+        <h3><strong>Sign-Up</strong></h3>
+        <hr class="my-4">
+        {% if smessage %}
+          <div class="alert alert-success">
+            {{ smessage }}
+          </div>
+        {% endif %}
+        {% if umessage %}
+          <div class="alert alert-danger">
+            {{ umessage }}
+          </div>
+        {% endif %}
+        <form action="/create_account" method="post">
+            <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" name="name"  placeholder="Enter email" required="True">
+            </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Password" required="True">
+            </div>
+            <button type="submit" name="submit" class="btn btn-primary">Create</button>
+            <p>Have an account? <a href="/index">Login</a></p>
+            {% for message in get_flashed_messages() %}
+              <p>{{ message }}</p>
+            {% endfor %}
+        </form>
+     </div>
+    </div>
+
+{% endblock %}
