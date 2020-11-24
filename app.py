@@ -3,6 +3,7 @@ from flask import Flask
 from flask import render_template, request, redirect, session, flash
 # from app import app
 import os
+# from firebase_admin import db, credentials
 
 app = Flask(__name__)
 
@@ -19,6 +20,14 @@ config = {
 
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
+db = firebase.database()
+
+# cred = credentials.Certificate(config)
+# firebase_admin.initialize_app(cred, {
+#     'databaseURL' : 'https://task-swe.firebaseio.com'
+# })
+
+# root= db.reference()
 
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
@@ -61,7 +70,32 @@ def forgot_password():
 def home():
     return render_template('home.html')
 
+@app.route('/info', methods=['GET','POST'])
+def info():
+    if (request.method == 'POST'):
+    # ref = db.child('task-swe')
+        name = request.form['name']
+        email = request.form['email']
+        place = request.form['place']
+        task = request.form['task']
+        
+        data = {
+            'email': email,
+            'Name': name,
+            'place' : place,
+            'task' : task
+            }
+        db.child("users").push(data)
+        # db.push(data)
+        # db.append({
+        #     'email': email,
+        #     'Name': name,
+        #     'place' : place,
+        #     'task' : task
+        #     })
+        return render_template('home.html')
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    app.run(debug=True)
+    # app.run(host="0.0.0.0", port=5000)
     

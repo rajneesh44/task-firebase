@@ -4,10 +4,31 @@
 
 
     <br/>
-      <div class="jumbotron">
-        <h1 class="display-4">Hey</h1>
-        <p class="lead">Welcome Home</p>
-        <hr class="my-4">
-     </div>
+    <br/>
+    <div class="container">
+    	<div class="jumbotron">
+    		<h3>Information</h3>
+    		<form action='/info' method = 'POST'>
+            	<div class="form-group">
+            	<label for="Name">Name: </label>
+            	<input type="text" class="form-control" name="name"  placeholder="Name" required>
+            	</div>
+            	<div class="form-group">
+            	<label for="Name">Email: </label>
+            	<input type="email" class="form-control" name="email"  placeholder="Email" required>
+            	</div>
+            	<div class="form-group">
+            	<label for="Place">Place of Birth: </label>
+            	<input type="text" class="form-control" name="place" placeholder="Place of birth" required>
+            	</div>
+            	<div class="form-group">
+            	<label for="task name">Task Name: </label>
+            	<input type="text" class="form-control" name="task" placeholder="Name of Task (software/robotics/machine learning)" required>
+            	</div>
+            	<button type="submit" name="submit" class="btn btn-warning">Submit</button>
+        	</form>
+     	</div>	
+    </div>
+      
 
 {% endblock %}
